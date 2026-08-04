@@ -14,9 +14,12 @@ import UserDashboard from './pages/UserDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminUserBoard from './pages/AdminUserBoard';
 import ConnectionBoard from './pages/ConnectionBoard';
- 
 import HowToRules from './pages/HowToRules';
+// Remove the old import
+// import AIChat from './components/AIChat';
 
+// Add the new import
+import ChatBot from './components/ChatBot';
  
  
 function App() {
@@ -37,6 +40,7 @@ function App() {
               <Route path="/board" element={<ProtectedRoute><ConnectionBoard /></ProtectedRoute>} />
               <Route path="/howto" element={<HowToRules />} />            
             </Routes>
+             <ChatBot />
           </TimeProvider>
         </TaskProvider>
       </AuthProvider>
