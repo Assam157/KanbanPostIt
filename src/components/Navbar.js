@@ -42,6 +42,7 @@ const Navbar = () => {
           </>
         )}
         <button style={styles.navBtn} onClick={() => navigate('/board')}>📊 Connection Board</button>
+        <button style={styles.navBtn} onClick={() => navigate('/boards')}>👥 Boards</button>
       </div>
     </nav>
   );

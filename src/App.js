@@ -11,17 +11,15 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import UserDashboard from './pages/UserDashboard';
-import AdminDashboard from './pages/AdminDashboard';
-import AdminUserBoard from './pages/AdminUserBoard';
 import ConnectionBoard from './pages/ConnectionBoard';
 import HowToRules from './pages/HowToRules';
-// Remove the old import
-// import AIChat from './components/AIChat';
+import BoardList from './pages/BoardList';                     // new
+import CollaborativeBoard from './pages/CollaborativeBoard';   // new
+import JoinBoard from './pages/JoinBoard';                     // new
+import AdminDashboard from './pages/AdminDashboard';
+import AdminUserBoard from './pages/AdminUserBoard';
+import ChatBot from './components/ChatBot'; // if you have the AI chatbot
 
-// Add the new import
-import ChatBot from './components/ChatBot';
- 
- 
 function App() {
   return (
     <BrowserRouter>
@@ -35,12 +33,19 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<ProtectedRoute><UserDashboard /></ProtectedRoute>} />
+              <Route path="/board" element={<ProtectedRoute><ConnectionBoard /></ProtectedRoute>} />
+              <Route path="/howto" element={<HowToRules />} />
+
+              {/* ---- Collaborative routes ---- */}
+              <Route path="/boards" element={<ProtectedRoute><BoardList /></ProtectedRoute>} />
+              <Route path="/board/:boardId" element={<ProtectedRoute><CollaborativeBoard /></ProtectedRoute>} />
+              <Route path="/board/:boardId/join" element={<ProtectedRoute><JoinBoard /></ProtectedRoute>} />
+
+              {/* Admin routes (used only in admin app, but keep them here if you want) */}
               <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
               <Route path="/admin/user/:userId" element={<AdminRoute><AdminUserBoard /></AdminRoute>} />
-              <Route path="/board" element={<ProtectedRoute><ConnectionBoard /></ProtectedRoute>} />
-              <Route path="/howto" element={<HowToRules />} />            
             </Routes>
-             <ChatBot />
+            <ChatBot />
           </TimeProvider>
         </TaskProvider>
       </AuthProvider>
